@@ -8,12 +8,17 @@ const [price, setPrice] = useState('');
 const [quantity, setQuantity] = useState('');
 
 //saw this in another example... not sure if this is what we needed to do.
-// const handleSubmit = (e) => {
-//     e.preventDefault();
+const handleSubmit = (e) => {
+    e.preventDefault();
+    const product = { id, name, description, price, quantity };
+    console.log(product);
 
-//     const product = { id, name, description, price, quantity };
-//     console.log(product);
-// }
+    setId('')
+    setName('')
+    setDescription('')
+    setPrice('')
+    setQuantity('')
+}
 
 /* maybe for line 32...
 <form
@@ -44,29 +49,29 @@ return (
                 value={name}  
                 onChange={(e) => setName(e.target.value)} />
        <label>DESCRIPTION</label>
-            <textarea>
-                <input
-                type="text"
+            <textarea
                 required
-                value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                />
+            >
+                {description}
             </textarea> 
             {/* also for description part...not sure either if this was right
              if we use textarea or just another input box like the rest -_-*/}
         <label>PRICE</label>
         <input
-                type="Number"
+                type="number"
                 required
                 value={price} 
                 onChange={(e) => setPrice(e.target.value)}/>
         <label>QUANTITY</label>
         <input
-                type="Number"
+                type="number"
                 required
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)} />
-        <button>SUBMIT</button>
+        <button
+         onClick={handleSubmit}
+        >SUBMIT</button>
         </form>
     </div>
 );
