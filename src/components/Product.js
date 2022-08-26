@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
  
 const Product = () => {
 const [id, setId] = useState('');
@@ -7,25 +8,18 @@ const [description, setDescription] = useState('');
 const [price, setPrice] = useState('');
 const [quantity, setQuantity] = useState('');
 
-//saw this in another example... not sure if this is what we needed to do.
-// const handleSubmit = (e) => {
-//     e.preventDefault();
 
-//     const product = { id, name, description, price, quantity };
-//     console.log(product);
-// }
+const handleSubmit = (e) => {
+    e.preventDefault();
+    const product = { id, name, description, price, quantity };
+    console.log(product);
 
-/* maybe for line 32...
-<form
-onSubmit={handleSubmit(() => {
-  try {
-    request();
-  } catch (e) {
-    // handle your error state here
-  }
-})}
-/>
-</>; */
+    axios.post('https://localhost:3000/product', { product })
+    .then(res=>{
+        console.log(res);
+        console.log(res.data);
+     })
+}
 
 return (
     <div className="create">
@@ -66,7 +60,7 @@ return (
                 required
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)} />
-        <button>SUBMIT</button>
+        <button onClick={handleSubmit}>SUBMIT</button>
         </form>
     </div>
 );
