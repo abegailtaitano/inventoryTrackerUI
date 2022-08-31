@@ -14,11 +14,15 @@ const handleSubmit = (e) => {
     const product = { id, name, description, price, quantity };
     console.log(product);
 
-    axios.post('http://localhost:3000/inventory/product', { product })
+    axios.post('http://localhost:3000/inventory/product',
+        product
+     )
     .then(res=>{
         console.log(res);
         console.log(res.data);
-     })
+     }).catch(
+         err =>{console.log(err)}
+    )
 }
 
 return (
@@ -38,13 +42,11 @@ return (
                 value={name}  
                 onChange={(e) => setName(e.target.value)} />
        <label>DESCRIPTION</label>
-            <textarea>
-                <input
-                type="text"
+            <textarea
                 required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                />
+            >
             </textarea> 
             {/* also for description part...not sure either if this was right
              if we use textarea or just another input box like the rest -_-*/}
