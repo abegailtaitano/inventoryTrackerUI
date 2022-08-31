@@ -52,13 +52,13 @@ return (
              if we use textarea or just another input box like the rest -_-*/}
         <label>PRICE</label>
         <input
-                type="Number"
+                type="text"
                 required
                 value={price} 
                 onChange={(e) => setPrice(e.target.value)}/>
         <label>QUANTITY</label>
         <input
-                type="Number"
+                type="text"
                 required
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)} />
